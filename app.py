@@ -9,7 +9,7 @@ def probability_to_odds(probability):
     return odds
 
 def main():
-    st.title("Conversor de PPG para Probabilidade e Odds")
+    st.title("Odd Justa")
 
     # Input do usuário para PPG
     ppg = st.number_input("PPG (Pontos por Jogo)", value=2.55, step=0.01)
@@ -22,9 +22,11 @@ def main():
         odds = probability_to_odds(probability)
 
         # Exibe os resultados
-        st.write(f"**PPG Home:** {ppg}")
-        st.write(f"**Probabilidade Home:** {probability:.4f}")
+        
         st.write(f"**Odds Home:** {odds:.2f}")
+        #st.write(f"**PPG Home:** {ppg}")        
+        #st.write(f"**Probabilidade Home:** {probability:.4f}")
+        
 
 if __name__ == "__main__":
     main()
