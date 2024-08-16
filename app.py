@@ -1,6 +1,6 @@
 import streamlit as st
 
-def ppg_to_probability(ppg, max_points_per_game):
+def ppg_to_probability(ppg, max_points_per_game=3):
     probability = ppg / max_points_per_game
     return probability
 
@@ -11,20 +11,20 @@ def probability_to_odds(probability):
 def main():
     st.title("Conversor de PPG para Probabilidade e Odds")
 
-    # Inputs do usuário
-    ppg = st.number_input("PPG (Pontos por Jogo)", value=2.44, step=0.01)
-    max_points_per_game = st.number_input("Pontos Máximos por Jogo", value=3, step=1)
+    # Input do usuário para PPG
+    ppg = st.number_input("PPG (Pontos por Jogo)", value=2.55, step=0.01)
 
-    # Calcula a probabilidade
-    probability = ppg_to_probability(ppg, max_points_per_game)
+    if ppg > 0:
+        # Calcula a probabilidade
+        probability = ppg_to_probability(ppg)
 
-    # Converte a probabilidade em odds
-    odds = probability_to_odds(probability)
+        # Converte a probabilidade em odds
+        odds = probability_to_odds(probability)
 
-    # Exibe os resultados
-    st.write(f"**PPG Home:** {ppg}")
-    st.write(f"**Probabilidade Home:** {probability:.4f}")
-    st.write(f"**Odds Home:** {odds:.2f}")
+        # Exibe os resultados
+        st.write(f"**PPG Home:** {ppg}")
+        st.write(f"**Probabilidade Home:** {probability:.4f}")
+        st.write(f"**Odds Home:** {odds:.2f}")
 
 if __name__ == "__main__":
     main()
